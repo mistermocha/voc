@@ -63,31 +63,36 @@ class BytesTests(TranspileTestCase):
 
     def test_isdigit(self):
         self.assertCodeExecution("""
-            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6', b'k', 'GHI', 'Jkl']:
+            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6',
+                    b'k', b'GHI', b'Jkl', b'!234', b'.', b'?/']:
                 print(byt.isdigit())
         """)
 
     def test_islower(self):
         self.assertCodeExecution("""
-            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6', b'k', 'GHI', 'Jkl']:
+            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6',
+                    b'k', b'GHI', b'Jkl', b'!234', b'.', b'?/']:
                 print(byt, byt.islower())
         """)
 
     def test_isupper(self):
         self.assertCodeExecution("""
-            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6', b'k', 'GHI', 'Jkl']:
+            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6',
+                    b'k', b'GHI', b'Jkl', b'!234', b'.', b'?/']:
                 print(byt, byt.islower())
         """)
 
     def test_isalpha(self):
         self.assertCodeExecution("""
-            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6', b'k', 'GHI', 'Jkl']:
+            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6',
+                    b'k', b'GHI', b'Jkl', b'!234', b'.', b'?/']:
                 print(byt, byt.isalpha())
         """)
 
     def test_isalnum(self):
         self.assertCodeExecution("""
-            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6', b'k', 'GHI', 'Jkl']:
+            for byt in [b'123', b'678', b'99999', b'abc', b'2s3x', 'a2b3', b'2S3X', 'A2b3', b'6',
+                    b'k', b'GHI', b'Jkl', b'!234', b'.', b'?/']:
                 print(byt, byt.isalnum())
         """)
 
