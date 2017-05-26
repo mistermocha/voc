@@ -1,5 +1,8 @@
 from .. utils import TranspileTestCase, UnaryOperationTestCase, BinaryOperationTestCase, InplaceOperationTestCase
 
+from hypothesis import given, note
+from hypothesis.strategies import text, characters
+
 
 class StrTests(TranspileTestCase):
     def test_setattr(self):
@@ -11,12 +14,14 @@ class StrTests(TranspileTestCase):
                 print(err)
             """)
 
-    def test_iscase(self):
-        self.assertCodeExecution("""
-            for s in ['hello, World!', 'HELLO, WORLD.', 'ello? world', '']:
-                print(s.islower())
-                print(s.isupper())
-            """)
+    @given(text(characters(max_codepoint=500, blacklist_categories=('Cc', 'Cs'))))
+    def test_iscase(self, strg):
+        code = (r"""
+            s = {!r}
+            print(s.islower())
+            print(s.isupper())
+            """.format(strg))
+        self.assertCodeExecution(code)
 
     def test_isdigit(self):
         self.assertCodeExecution("""

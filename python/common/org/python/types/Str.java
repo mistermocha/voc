@@ -867,10 +867,19 @@ public class Str extends org.python.types.Object {
                     "at least one cased character in S, False otherwise.\n"
     )
     public org.python.Object islower() {
-        if (!this.value.isEmpty() && this.value.toLowerCase().equals(this.value)) {
-            return new org.python.types.Bool(true);
+        if (this.value.isEmpty()) {
+            return new org.python.types.Bool(false);
         }
-        return new org.python.types.Bool(false);
+        boolean hasLetter = false;
+        for (char ch : this.value.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                hasLetter = true;
+                if (!(Character.isLowerCase(ch))) {
+                    return new org.python.types.Bool(false);
+                }
+            }
+        }
+        return new org.python.types.Bool(hasLetter);
     }
 
     @org.python.Method(
@@ -946,10 +955,19 @@ public class Str extends org.python.types.Object {
                     "at least one cased character in S, False otherwise.\n"
     )
     public org.python.Object isupper() {
-        if (!this.value.isEmpty() && this.value.toUpperCase().equals(this.value)) {
-            return new org.python.types.Bool(true);
+        if (this.value.isEmpty()) {
+            return new org.python.types.Bool(false);
         }
-        return new org.python.types.Bool(false);
+        boolean hasLetter = false;
+        for (char ch : this.value.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                hasLetter = true;
+                if (!(Character.isUpperCase(ch))) {
+                    return new org.python.types.Bool(false);
+                }
+            }
+        }
+        return new org.python.types.Bool(hasLetter);
     }
 
     @org.python.Method(
