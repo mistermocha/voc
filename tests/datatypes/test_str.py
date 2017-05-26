@@ -1,6 +1,6 @@
 from .. utils import TranspileTestCase, UnaryOperationTestCase, BinaryOperationTestCase, InplaceOperationTestCase
 
-from hypothesis import given, note
+from hypothesis import given
 from hypothesis.strategies import text, characters
 
 
